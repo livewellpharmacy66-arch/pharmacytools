@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pharmacy Tools — Live Well Pharmacy</title>
+<meta name="description" content="Every pharmacy tool in one place: compliance audits, staff paperwork, training records and clinical service builders.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F8F5;
+  --paper-2:#FFFFFF;
+  --ink:#16211C;
+  --ink-soft:#4A5A52;
+  --ink-faint:#7B8A82;
+  --green:#1F5D4C;
+  --green-deep:#123A2F;
+  --wash:#DFE9E1;
+  --wash-2:#EEF3EE;
+  --rule:#C9D6CD;
+  --amber:#B26A00;
+  --amber-wash:#FBF0DE;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --serif:"Newsreader",Georgia,serif;
+  --maxw:58rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  padding-bottom:4rem;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.1rem}
+
+/* ---------- masthead ---------- */
+.masthead{
+  background:var(--green-deep);
+  color:#EAF1EC;
+  padding:1.7rem 0 1.5rem;
+  border-bottom:3px solid var(--green);
+}
+.masthead h1{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:1.7rem;
+  line-height:1.2;
+  margin:0 0 .35rem;
+  letter-spacing:-.01em;
+}
+.masthead p{
+  margin:0;
+  font-size:.92rem;
+  color:#A8C2B4;
+  max-width:36rem;
+}
+.masthead .count{
+  font-size:.76rem;
+  color:#7FA292;
+  margin-top:.8rem;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+
+/* ---------- filter ---------- */
+.filter{
+  margin:1.3rem 0 .4rem;
+  position:relative;
+}
+.filter input{
+  width:100%;
+  font-family:var(--sans);
+  font-size:1rem;
+  color:var(--ink);
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:.7rem .85rem;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.filter input:focus{
+  outline:2px solid var(--green);
+  outline-offset:-1px;
+  border-color:var(--green);
+}
+.filter input::placeholder{color:var(--ink-faint)}
+.empty{
+  display:none;
+  margin:1.2rem 0;
+  font-size:.9rem;
+  color:var(--ink-soft);
+}
+.empty.is-shown{display:block}
+
+/* ---------- groups ---------- */
+.group{margin-top:1.7rem}
+.group[hidden]{display:none}
+.group h2{
+  font-family:var(--serif);
+  font-size:1.12rem;
+  font-weight:600;
+  margin:0 0 .15rem;
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--rule);
+  line-height:1.25;
+}
+.group h2 small{
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:.76rem;
+  color:var(--ink-faint);
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  margin-left:.5rem;
+}
+
+/* ---------- cards ---------- */
+.cards{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:.8rem;
+  grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));
+  margin-top:.9rem;
+}
+.cards li[hidden]{display:none}
+.card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-left:4px solid var(--green);
+  padding:.9rem 1rem 1rem;
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.card:hover,.card:focus-visible{
+  border-color:var(--green);
+  box-shadow:0 2px 0 var(--wash);
+  transform:translateY(-1px);
+}
+.card:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.card h3{
+  font-family:var(--serif);
+  font-size:1.06rem;
+  font-weight:600;
+  margin:0 0 .3rem;
+  line-height:1.3;
+}
+.card p{
+  margin:0;
+  font-size:.86rem;
+  color:var(--ink-soft);
+  flex:1 1 auto;
+}
+.card .go{
+  margin-top:.8rem;
+  font-size:.76rem;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--green);
+}
+.card .go::after{content:" \2192"}
+.card.is-unset{border-left-color:var(--amber);background:var(--amber-wash)}
+.card.is-unset .go{color:var(--amber)}
+.card.is-unset .go::after{content:""}
+@media (prefers-reduced-motion:reduce){
+  .card{transition:none}
+  .card:hover,.card:focus-visible{transform:none}
+}
+
+/* ---------- footer ---------- */
+.foot{
+  margin-top:2.4rem;
+  padding-top:1rem;
+  border-top:1px solid var(--rule);
+  font-size:.8rem;
+  color:var(--ink-faint);
+}
+.foot p{margin:0 0 .4rem}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1>Pharmacy Tools</h1>
+    <p>Every tool in one place. Pick one and it opens in a new tab.</p>
+    <p class="count" id="count"></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="filter">
+    <input id="q" type="search" aria-label="Filter tools" placeholder="Filter by name — audit, training, contract…" autocomplete="off" spellcheck="false">
+  </div>
+
+  <p class="empty" id="empty">Nothing matches that. Clear the box to see everything.</p>
+
+  <div id="groups"></div>
+
+  <footer class="foot">
+    <p>Internal tools for Live Well Pharmacy. Each one runs entirely in your browser — nothing you type is sent anywhere unless the tool says otherwise.</p>
+  </footer>
+
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   APP LIST — the only thing you need to edit.
+
+   Paste each tool's live address into its "url" below, replacing the
+   empty quotes. For example:
+       url: "https://pqstracker.netlify.app"
+
+   A tool with an empty url still appears, marked in amber, and is
+   not clickable — so a missing address is obvious rather than broken.
+
+   To add a new tool later, copy any line and change the three fields.
+   ═══════════════════════════════════════════════════════════════════ */
+
+const APPS = [
+
+  /* ---- Compliance & inspection ---------------------------------- */
+  {
+    group: "Compliance & inspection",
+    name:  "Inspection Ready",
+    desc:  "Self-audit against the GPhC standards for registered pharmacies. 67 checks, an honest verdict, and a dated improvement action plan.",
+    url:   "https://inspection-ready-check.netlify.app/"
+  },
+  {
+    group: "Compliance & inspection",
+    name:  "CPAF Check",
+    desc:  "Both CPAF screening questionnaires in one place. Ten questions, 55 criteria, an attainment level per question and a gap list.",
+    url:   "https://cpafquestionnaire.netlify.app/"
+  },
+  {
+    group: "Compliance & inspection",
+    name:  "PQS Tracker",
+    desc:  "Nine checks for the 2026/27 Pharmacy Quality Scheme. Tick what you have done and it tells you whether you will be paid, and how much.",
+    url:   "https://pqstracker.netlify.app/"
+  },
+
+  /* ---- Clinical services ---------------------------------------- */
+  {
+    group: "Clinical services",
+    name:  "Scope of Practice Builder",
+    desc:  "Build a defensible scope of practice record for pharmacist independent prescribers before going live with NHS Pharmacy First.",
+    url:   "https://scopeofpractice.netlify.app/"
+  },
+  {
+    group: "Clinical services",
+    name:  "GP Notification Letter",
+    desc:  "Weight management initiation letter to the patient's registered practice. Looks up the surgery on ODS and remembers its NHSmail address.",
+    url:   "https://gpletter.netlify.app/"
+  },
+
+  /* ---- Staff & training ----------------------------------------- */
+  {
+    group: "Staff & training",
+    name:  "Staff Contract Builder",
+    desc:  "Written statements of employment particulars for community pharmacy, plus a matching staff handbook. Current to September 2026.",
+    url:   "https://staffcontracts.netlify.app/"
+  },
+  {
+    group: "Staff & training",
+    name:  "Training Matrix & Appraisals",
+    desc:  "Track training by role and run appraisals that pull straight from each person's training record.",
+    url:   "https://trainingmatrixandstaffreview.netlify.app/"
+  },
+  {
+    group: "Staff & training",
+    name:  "Staff Training Briefing Pack",
+    desc:  "In-house briefings to deliver yourself, plus a routes page showing which training must be done externally and where to send people.",
+    url:   "https://pharmacystafftraining.netlify.app/"
+  },
+
+  /* ---- Business ------------------------------------------------- */
+  {
+    group: "Business",
+    name:  "Deal Appraiser",
+    desc:  "Community pharmacy acquisitions underwritten from the buyer's side. Checks the seller's item count against the NHSBSA record.",
+    url:   "https://pharmacyappraisal.netlify.app/"
+  }
+
+];
+
+/* ═══════════════════════════════════════════════════════════════════
+   Rendering — no need to change anything below.
+   ═══════════════════════════════════════════════════════════════════ */
+
+const groupsEl = document.getElementById("groups");
+const countEl  = document.getElementById("count");
+const emptyEl  = document.getElementById("empty");
+const qEl      = document.getElementById("q");
+
+// Preserve the order the groups first appear in APPS.
+const order = [];
+const byGroup = new Map();
+for (const app of APPS) {
+  if (!byGroup.has(app.group)) { byGroup.set(app.group, []); order.push(app.group); }
+  byGroup.get(app.group).push(app);
+}
+
+for (const groupName of order) {
+  const apps = byGroup.get(groupName);
+
+  const section = document.createElement("section");
+  section.className = "group";
+
+  const h2 = document.createElement("h2");
+  h2.textContent = groupName;
+  const small = document.createElement("small");
+  small.textContent = apps.length + (apps.length === 1 ? " tool" : " tools");
+  h2.appendChild(small);
+  section.appendChild(h2);
+
+  const ul = document.createElement("ul");
+  ul.className = "cards";
+
+  for (const app of apps) {
+    const li = document.createElement("li");
+    const hasUrl = typeof app.url === "string" && app.url.trim() !== "";
+
+    // An anchor when there is somewhere to go, a plain div when there isn't,
+    // so an unset tool is never a dead link.
+    const card = document.createElement(hasUrl ? "a" : "div");
+    card.className = hasUrl ? "card" : "card is-unset";
+    if (hasUrl) {
+      card.href = app.url.trim();
+      card.target = "_blank";
+      card.rel = "noopener";
+    }
+
+    const h3 = document.createElement("h3");
+    h3.textContent = app.name;
+
+    const p = document.createElement("p");
+    p.textContent = app.desc;
+
+    const go = document.createElement("span");
+    go.className = "go";
+    go.textContent = hasUrl ? "Open" : "No address set yet";
+
+    card.append(h3, p, go);
+    li.appendChild(card);
+    li.dataset.search = (app.name + " " + app.desc + " " + app.group).toLowerCase();
+    ul.appendChild(li);
+  }
+
+  section.appendChild(ul);
+  groupsEl.appendChild(section);
+}
+
+const live = APPS.filter(a => a.url && a.url.trim() !== "").length;
+countEl.textContent = live === APPS.length
+  ? APPS.length + " tools"
+  : live + " of " + APPS.length + " tools linked";
+
+function applyFilter() {
+  const term = qEl.value.trim().toLowerCase();
+  let shown = 0;
+
+  for (const section of groupsEl.querySelectorAll(".group")) {
+    let inGroup = 0;
+    for (const li of section.querySelectorAll(".cards > li")) {
+      const match = term === "" || li.dataset.search.includes(term);
+      li.hidden = !match;
+      if (match) inGroup++;
+    }
+    section.hidden = inGroup === 0;
+    shown += inGroup;
+  }
+
+  emptyEl.classList.toggle("is-shown", shown === 0);
+}
+
+qEl.addEventListener("input", applyFilter);
+</script>
+
+</body>
+</html>
