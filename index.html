@@ -3,233 +3,342 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pharmacy Tools — Live Well Pharmacy</title>
-<meta name="description" content="Every pharmacy tool in one place: compliance audits, staff paperwork, training records and clinical service builders.">
+<title>Pharmacy Tools</title>
+<meta name="description" content="Every Live Well Pharmacy tool in one place — compliance audits, staff paperwork, training records and clinical service builders.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 :root{
-  --paper:#F7F8F5;
-  --paper-2:#FFFFFF;
-  --ink:#16211C;
-  --ink-soft:#4A5A52;
-  --ink-faint:#7B8A82;
+  /* paper with a green bias, so it sits under the counter band rather than fighting it */
+  --ground:#F2F4EF;
+  --surface:#FFFFFF;
+  --ink:#101C17;
+  --ink-2:#46564E;
+  --ink-3:#7D8C84;
   --green:#1F5D4C;
-  --green-deep:#123A2F;
-  --wash:#DFE9E1;
-  --wash-2:#EEF3EE;
-  --rule:#C9D6CD;
-  --amber:#B26A00;
-  --amber-wash:#FBF0DE;
-  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --serif:"Newsreader",Georgia,serif;
-  --maxw:58rem;
+  --green-deep:#0E2C23;
+  --green-wash:#E4EDE6;
+  --brass:#9A7B2E;
+  --brass-wash:#F6EFDE;
+  --line:#D3DCD5;
+  --hair:#E6EBE5;
+
+  --display:"Fraunces",Charter,"Iowan Old Style",Georgia,serif;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --maxw:64rem;
 }
+
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;
-  background:var(--paper);
+  background:var(--ground);
   color:var(--ink);
   font-family:var(--sans);
   font-size:16px;
   line-height:1.55;
-  padding-bottom:4rem;
 }
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.1rem}
-
-/* ---------- masthead ---------- */
-.masthead{
-  background:var(--green-deep);
-  color:#EAF1EC;
-  padding:1.7rem 0 1.5rem;
-  border-bottom:3px solid var(--green);
-}
-.masthead h1{
-  font-family:var(--serif);
-  font-weight:500;
-  font-size:1.7rem;
-  line-height:1.2;
-  margin:0 0 .35rem;
-  letter-spacing:-.01em;
-}
-.masthead p{
-  margin:0;
-  font-size:.92rem;
-  color:#A8C2B4;
-  max-width:36rem;
-}
-.masthead .count{
-  font-size:.76rem;
-  color:#7FA292;
-  margin-top:.8rem;
-  letter-spacing:.03em;
-  text-transform:uppercase;
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding-inline:1.25rem;
 }
 
-/* ---------- filter ---------- */
-.filter{
-  margin:1.3rem 0 .4rem;
+/* ── counter band ───────────────────────────────────────────── */
+.counter{
   position:relative;
+  overflow:hidden;
+  background:var(--green-deep);
+  color:#E8F0E9;
+  border-bottom:4px solid var(--brass);
 }
-.filter input{
-  width:100%;
-  font-family:var(--sans);
-  font-size:1rem;
-  color:var(--ink);
-  background:var(--paper-2);
-  border:1px solid var(--rule);
-  border-radius:2px;
-  padding:.7rem .85rem;
-  -webkit-appearance:none;
-  appearance:none;
+.counter .wrap{
+  position:relative;
+  z-index:1;
+  padding-block:2.4rem 2.1rem;
 }
-.filter input:focus{
-  outline:2px solid var(--green);
-  outline-offset:-1px;
-  border-color:var(--green);
-}
-.filter input::placeholder{color:var(--ink-faint)}
-.empty{
-  display:none;
-  margin:1.2rem 0;
-  font-size:.9rem;
-  color:var(--ink-soft);
-}
-.empty.is-shown{display:block}
-
-/* ---------- groups ---------- */
-.group{margin-top:1.7rem}
-.group[hidden]{display:none}
-.group h2{
-  font-family:var(--serif);
-  font-size:1.12rem;
-  font-weight:600;
-  margin:0 0 .15rem;
-  padding-bottom:.5rem;
-  border-bottom:1px solid var(--rule);
-  line-height:1.25;
-}
-.group h2 small{
-  font-family:var(--sans);
-  font-weight:400;
-  font-size:.76rem;
-  color:var(--ink-faint);
-  letter-spacing:.03em;
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:500;
+  letter-spacing:.16em;
   text-transform:uppercase;
-  margin-left:.5rem;
+  color:#93B3A1;
+  margin:0 0 .7rem;
+}
+.counter h1{
+  font-family:var(--display);
+  font-optical-sizing:auto;
+  font-weight:600;
+  font-size:clamp(2.1rem,6vw,3.1rem);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  margin:0 0 .55rem;
+  text-wrap:balance;
+  color:#FBFDFA;
+}
+.counter .lede{
+  margin:0;
+  font-size:1.02rem;
+  color:#B7CDBF;
+  max-width:34rem;
+}
+/* the green cross — pharmacy's own sign, bled off the right edge */
+.cross{
+  position:absolute;
+  right:1.5rem;
+  top:50%;
+  transform:translateY(-50%);
+  width:13.5rem;
+  height:13.5rem;
+  opacity:.16;
+  pointer-events:none;
+  z-index:0;
+}
+@media (max-width:52rem){ .cross{right:-3.5rem;width:11rem;height:11rem;opacity:.1} }
+
+/* ── search shelf ───────────────────────────────────────────── */
+.shelf{
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.shelf .wrap{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.85rem;
+  padding-block:.85rem;
+}
+.field{
+  flex:1 1 16rem;
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  border:1px solid var(--line);
+  background:var(--ground);
+  padding:.15rem .7rem;
+}
+.field:focus-within{
+  border-color:var(--green);
+  box-shadow:inset 0 0 0 1px var(--green);
+}
+.field svg{flex:none;color:var(--ink-3)}
+.field input{
+  flex:1 1 auto;
+  min-width:0;
+  border:0;
+  background:none;
+  font-family:var(--sans);
+  font-size:.95rem;
+  color:var(--ink);
+  padding:.5rem 0;
+}
+.field input:focus{outline:none}
+.field input::placeholder{color:var(--ink-3)}
+.tally{
+  font-family:var(--mono);
+  font-size:.75rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  font-variant-numeric:tabular-nums;
 }
 
-/* ---------- cards ---------- */
-.cards{
+/* ── groups ─────────────────────────────────────────────────── */
+main{padding-block:1.9rem 3.5rem}
+.group + .group{margin-top:2.4rem}
+.group[hidden]{display:none}
+.group-head{
+  display:flex;
+  align-items:baseline;
+  gap:.8rem;
+  margin-bottom:1rem;
+}
+.group-head h2{
+  font-family:var(--display);
+  font-optical-sizing:auto;
+  font-size:1.32rem;
+  font-weight:600;
+  letter-spacing:-.01em;
+  margin:0;
+  white-space:nowrap;
+}
+.group-head .rule{
+  flex:1 1 auto;
+  height:1px;
+  background:var(--line);
+}
+.group-head .n{
+  font-family:var(--mono);
+  font-size:.74rem;
+  letter-spacing:.1em;
+  color:var(--brass);
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+
+/* ── dispensing labels ──────────────────────────────────────── */
+.rack{
   list-style:none;
   margin:0;
   padding:0;
   display:grid;
-  gap:.8rem;
-  grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));
-  margin-top:.9rem;
+  gap:1rem;
+  grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));
 }
-.cards li[hidden]{display:none}
-.card{
+.rack li[hidden]{display:none}
+
+.tool{
+  position:relative;
   display:flex;
   flex-direction:column;
+  gap:.5rem;
   height:100%;
-  background:var(--paper-2);
-  border:1px solid var(--rule);
-  border-left:4px solid var(--green);
-  padding:.9rem 1rem 1rem;
-  text-decoration:none;
+  padding:1.15rem 1.15rem 1.05rem;
+  background:var(--surface);
+  border:1px solid var(--line);
   color:inherit;
-  transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  text-decoration:none;
+  transition:border-color .16s ease, transform .16s ease, box-shadow .16s ease;
 }
-.card:hover,.card:focus-visible{
+/* the label's printed rule, drawn across on hover */
+.tool::before{
+  content:"";
+  position:absolute;
+  inset:0 auto auto 0;
+  height:3px;
+  width:2.6rem;
+  background:var(--green);
+  transition:width .22s ease;
+}
+.tool:hover,.tool:focus-visible{
   border-color:var(--green);
-  box-shadow:0 2px 0 var(--wash);
-  transform:translateY(-1px);
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px -12px rgba(16,28,23,.55);
 }
-.card:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-.card h3{
-  font-family:var(--serif);
-  font-size:1.06rem;
+.tool:hover::before,.tool:focus-visible::before{width:100%}
+.tool:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+.tool h3{
+  font-family:var(--display);
+  font-optical-sizing:auto;
+  font-size:1.17rem;
   font-weight:600;
-  margin:0 0 .3rem;
-  line-height:1.3;
+  line-height:1.22;
+  letter-spacing:-.01em;
+  margin:.25rem 0 0;
+  text-wrap:balance;
 }
-.card p{
+.tool p{
   margin:0;
-  font-size:.86rem;
-  color:var(--ink-soft);
+  font-size:.88rem;
+  line-height:1.5;
+  color:var(--ink-2);
   flex:1 1 auto;
 }
-.card .go{
-  margin-top:.8rem;
+.tool .meta{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.02em;
+  color:var(--brass);
+  font-variant-numeric:tabular-nums;
+}
+.tool .go{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  margin-top:.15rem;
   font-size:.76rem;
   font-weight:600;
-  letter-spacing:.04em;
+  letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--green);
 }
-.card .go::after{content:" \2192"}
-.card.is-unset{border-left-color:var(--amber);background:var(--amber-wash)}
-.card.is-unset .go{color:var(--amber)}
-.card.is-unset .go::after{content:""}
+.tool .go .arrow{transition:transform .16s ease}
+.tool:hover .go .arrow{transform:translateX(3px)}
+
+/* a tool with no address is stated as such, never a dead link */
+.tool.unset{background:var(--brass-wash);border-style:dashed}
+.tool.unset::before{background:var(--brass)}
+.tool.unset .go{color:var(--brass)}
+
 @media (prefers-reduced-motion:reduce){
-  .card{transition:none}
-  .card:hover,.card:focus-visible{transform:none}
+  .tool,.tool::before,.tool .go .arrow{transition:none}
+  .tool:hover,.tool:focus-visible{transform:none}
 }
 
-/* ---------- footer ---------- */
-.foot{
-  margin-top:2.4rem;
-  padding-top:1rem;
-  border-top:1px solid var(--rule);
-  font-size:.8rem;
-  color:var(--ink-faint);
+/* ── empty state & footer ───────────────────────────────────── */
+.nothing{
+  display:none;
+  font-size:.92rem;
+  color:var(--ink-2);
+  padding:1.5rem 0;
+  border-top:1px solid var(--hair);
 }
-.foot p{margin:0 0 .4rem}
+.nothing.on{display:block}
+.colophon{
+  margin-top:3rem;
+  padding-top:1.1rem;
+  border-top:1px solid var(--line);
+  font-size:.8rem;
+  line-height:1.6;
+  color:var(--ink-3);
+  max-width:38rem;
+}
+.colophon strong{color:var(--ink-2);font-weight:500}
 </style>
 </head>
 <body>
 
-<header class="masthead">
+<header class="counter">
+  <svg class="cross" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+    <path d="M38 4h24v34h34v24H62v34H38V62H4V38h34z" fill="none" stroke="#EAF3EC" stroke-width="2.5"></path>
+  </svg>
   <div class="wrap">
+    <p class="eyebrow">Live Well Pharmacy</p>
     <h1>Pharmacy Tools</h1>
-    <p>Every tool in one place. Pick one and it opens in a new tab.</p>
-    <p class="count" id="count"></p>
+    <p class="lede">Everything built for the pharmacy, in one place. Pick one and it opens in a new tab.</p>
   </div>
 </header>
 
-<main class="wrap">
-
-  <div class="filter">
-    <input id="q" type="search" aria-label="Filter tools" placeholder="Filter by name — audit, training, contract…" autocomplete="off" spellcheck="false">
+<div class="shelf">
+  <div class="wrap">
+    <div class="field">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
+        <circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14" stroke-linecap="round"></path>
+      </svg>
+      <input id="q" type="search" aria-label="Filter tools" placeholder="Filter — audit, training, contract, prescribing…" autocomplete="off" spellcheck="false">
+    </div>
+    <p class="tally" id="tally"></p>
   </div>
+</div>
 
-  <p class="empty" id="empty">Nothing matches that. Clear the box to see everything.</p>
+<main class="wrap">
+  <div id="racks"></div>
+  <p class="nothing" id="nothing">Nothing matches that. Clear the box to see everything again.</p>
 
-  <div id="groups"></div>
-
-  <footer class="foot">
-    <p>Internal tools for Live Well Pharmacy. Each one runs entirely in your browser — nothing you type is sent anywhere unless the tool says otherwise.</p>
+  <footer class="colophon">
+    <p><strong>Every tool runs entirely in the browser.</strong> Nothing you type is sent anywhere unless the tool says otherwise — the GP notification letter keeps patient details on the page until you copy them out, and forgets them when you close it.</p>
   </footer>
-
 </main>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   APP LIST — the only thing you need to edit.
+   TOOL LIST — the only thing you need to edit.
 
-   Paste each tool's live address into its "url" below, replacing the
-   empty quotes. For example:
-       url: "https://pqstracker.netlify.app"
+   Four fields per tool:
+     group — the heading it sits under
+     name  — what it is called
+     desc  — one line on what it does
+     meta  — a true figure from the tool itself, shown in brass
+     url   — where it lives; leave "" and the card says so rather
+             than becoming a dead link
 
-   A tool with an empty url still appears, marked in amber, and is
-   not clickable — so a missing address is obvious rather than broken.
-
-   To add a new tool later, copy any line and change the three fields.
+   To add a tool, copy a block and change the five fields.
    ═══════════════════════════════════════════════════════════════════ */
 
 const APPS = [
@@ -238,19 +347,22 @@ const APPS = [
   {
     group: "Compliance & inspection",
     name:  "Inspection Ready",
-    desc:  "Self-audit against the GPhC standards for registered pharmacies. 67 checks, an honest verdict, and a dated improvement action plan.",
+    desc:  "Self-audit against the GPhC standards for registered pharmacies, with an honest verdict and a dated improvement action plan.",
+    meta:  "67 checks · GPhC standards",
     url:   "https://inspection-ready-check.netlify.app/"
   },
   {
     group: "Compliance & inspection",
     name:  "CPAF Check",
-    desc:  "Both CPAF screening questionnaires in one place. Ten questions, 55 criteria, an attainment level per question and a gap list.",
+    desc:  "Both CPAF screening questionnaires in one place — an attainment level per question and the gaps listed out.",
+    meta:  "10 questions · 55 criteria",
     url:   "https://cpafquestionnaire.netlify.app/"
   },
   {
     group: "Compliance & inspection",
     name:  "PQS Tracker",
-    desc:  "Nine checks for the 2026/27 Pharmacy Quality Scheme. Tick what you have done and it tells you whether you will be paid, and how much.",
+    desc:  "Tick off what you have done and it tells you whether you will be paid under the Pharmacy Quality Scheme, and how much.",
+    meta:  "9 checks · 2026/27",
     url:   "https://pqstracker.netlify.app/"
   },
 
@@ -258,13 +370,15 @@ const APPS = [
   {
     group: "Clinical services",
     name:  "Scope of Practice Builder",
-    desc:  "Build a defensible scope of practice record for pharmacist independent prescribers before going live with NHS Pharmacy First.",
+    desc:  "Build a defensible scope of practice record for pharmacist independent prescribers before going live.",
+    meta:  "Pharmacy First · contraception",
     url:   "https://scopeofpractice.netlify.app/"
   },
   {
     group: "Clinical services",
     name:  "GP Notification Letter",
-    desc:  "Weight management initiation letter to the patient's registered practice. Looks up the surgery on ODS and remembers its NHSmail address.",
+    desc:  "Weight management initiation letter to the patient's registered practice, with the surgery looked up and remembered.",
+    meta:  "ODS lookup · NHSmail",
     url:   "https://gpletter.netlify.app/"
   },
 
@@ -272,42 +386,48 @@ const APPS = [
   {
     group: "Staff & training",
     name:  "Staff Contract Builder",
-    desc:  "Written statements of employment particulars for community pharmacy, plus a matching staff handbook. Current to September 2026.",
+    desc:  "Written statements of employment particulars for community pharmacy, with a matching staff handbook.",
+    meta:  "Current to September 2026",
     url:   "https://staffcontracts.netlify.app/"
   },
   {
     group: "Staff & training",
     name:  "Training Matrix & Appraisals",
     desc:  "Track training by role and run appraisals that pull straight from each person's training record.",
+    meta:  "By role · per person",
     url:   "https://trainingmatrixandstaffreview.netlify.app/"
   },
   {
     group: "Staff & training",
     name:  "Staff Training Briefing Pack",
-    desc:  "In-house briefings to deliver yourself, plus a routes page showing which training must be done externally and where to send people.",
+    desc:  "In-house briefings to deliver yourself, plus a routes page for the training that has to be done externally.",
+    meta:  "In-house · external routes",
     url:   "https://pharmacystafftraining.netlify.app/"
   },
 
-  /* ---- Business ------------------------------------------------- */
+  /* ---- Buying & selling ----------------------------------------- */
   {
-    group: "Business",
+    group: "Buying & selling",
     name:  "Deal Appraiser",
-    desc:  "Community pharmacy acquisitions underwritten from the buyer's side. Checks the seller's item count against the NHSBSA record.",
+    desc:  "Community pharmacy acquisitions underwritten from the buyer's side, checking the seller's item count against the NHS record.",
+    meta:  "NHSBSA dispensing data",
     url:   "https://pharmacyappraisal.netlify.app/"
   }
 
 ];
 
 /* ═══════════════════════════════════════════════════════════════════
-   Rendering — no need to change anything below.
+   Rendering — nothing below needs changing to add a tool.
    ═══════════════════════════════════════════════════════════════════ */
 
-const groupsEl = document.getElementById("groups");
-const countEl  = document.getElementById("count");
-const emptyEl  = document.getElementById("empty");
+const racksEl  = document.getElementById("racks");
+const tallyEl  = document.getElementById("tally");
+const nothingEl = document.getElementById("nothing");
 const qEl      = document.getElementById("q");
 
-// Preserve the order the groups first appear in APPS.
+const ARROW = '<svg class="arrow" width="13" height="9" viewBox="0 0 13 9" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M1 4.5h10M8 1.5l3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+// Keep the order the groups first appear in APPS.
 const order = [];
 const byGroup = new Map();
 for (const app of APPS) {
@@ -321,29 +441,37 @@ for (const groupName of order) {
   const section = document.createElement("section");
   section.className = "group";
 
+  const head = document.createElement("div");
+  head.className = "group-head";
   const h2 = document.createElement("h2");
   h2.textContent = groupName;
-  const small = document.createElement("small");
-  small.textContent = apps.length + (apps.length === 1 ? " tool" : " tools");
-  h2.appendChild(small);
-  section.appendChild(h2);
+  const rule = document.createElement("span");
+  rule.className = "rule";
+  const n = document.createElement("span");
+  n.className = "n";
+  n.textContent = apps.length === 1 ? "1 tool" : apps.length + " tools";
+  head.append(h2, rule, n);
+  section.appendChild(head);
 
   const ul = document.createElement("ul");
-  ul.className = "cards";
+  ul.className = "rack";
 
   for (const app of apps) {
     const li = document.createElement("li");
-    const hasUrl = typeof app.url === "string" && app.url.trim() !== "";
+    const linked = typeof app.url === "string" && app.url.trim() !== "";
 
-    // An anchor when there is somewhere to go, a plain div when there isn't,
-    // so an unset tool is never a dead link.
-    const card = document.createElement(hasUrl ? "a" : "div");
-    card.className = hasUrl ? "card" : "card is-unset";
-    if (hasUrl) {
+    // An anchor where there is somewhere to go, a plain box where there isn't.
+    const card = document.createElement(linked ? "a" : "div");
+    card.className = linked ? "tool" : "tool unset";
+    if (linked) {
       card.href = app.url.trim();
       card.target = "_blank";
       card.rel = "noopener";
     }
+
+    const meta = document.createElement("span");
+    meta.className = "meta";
+    meta.textContent = app.meta;
 
     const h3 = document.createElement("h3");
     h3.textContent = app.name;
@@ -353,30 +481,36 @@ for (const groupName of order) {
 
     const go = document.createElement("span");
     go.className = "go";
-    go.textContent = hasUrl ? "Open" : "No address set yet";
+    if (linked) {
+      go.append("Open");
+      go.insertAdjacentHTML("beforeend", ARROW);
+    } else {
+      go.textContent = "No address set yet";
+    }
 
-    card.append(h3, p, go);
+    card.append(meta, h3, p, go);
     li.appendChild(card);
-    li.dataset.search = (app.name + " " + app.desc + " " + app.group).toLowerCase();
+    li.dataset.search = (app.name + " " + app.desc + " " + app.meta + " " + app.group).toLowerCase();
     ul.appendChild(li);
   }
 
   section.appendChild(ul);
-  groupsEl.appendChild(section);
+  racksEl.appendChild(section);
 }
 
-const live = APPS.filter(a => a.url && a.url.trim() !== "").length;
-countEl.textContent = live === APPS.length
+const linkedCount = APPS.filter(a => a.url && a.url.trim() !== "").length;
+const baseTally = linkedCount === APPS.length
   ? APPS.length + " tools"
-  : live + " of " + APPS.length + " tools linked";
+  : linkedCount + " of " + APPS.length + " linked";
+tallyEl.textContent = baseTally;
 
 function applyFilter() {
   const term = qEl.value.trim().toLowerCase();
   let shown = 0;
 
-  for (const section of groupsEl.querySelectorAll(".group")) {
+  for (const section of racksEl.querySelectorAll(".group")) {
     let inGroup = 0;
-    for (const li of section.querySelectorAll(".cards > li")) {
+    for (const li of section.querySelectorAll(".rack > li")) {
       const match = term === "" || li.dataset.search.includes(term);
       li.hidden = !match;
       if (match) inGroup++;
@@ -385,7 +519,10 @@ function applyFilter() {
     shown += inGroup;
   }
 
-  emptyEl.classList.toggle("is-shown", shown === 0);
+  nothingEl.classList.toggle("on", shown === 0);
+  tallyEl.textContent = term === ""
+    ? baseTally
+    : shown + (shown === 1 ? " match" : " matches");
 }
 
 qEl.addEventListener("input", applyFilter);
