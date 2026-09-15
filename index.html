@@ -146,6 +146,7 @@ body{
   text-transform:uppercase;
   color:var(--ink-3);
   font-variant-numeric:tabular-nums;
+  margin:0;
 }
 
 /* ── groups ─────────────────────────────────────────────────── */
@@ -247,11 +248,18 @@ main{padding-block:1.9rem 3.5rem}
   color:var(--brass);
   font-variant-numeric:tabular-nums;
 }
+.tool .foot{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:.5rem;
+  margin-top:.15rem;
+}
 .tool .go{
   display:inline-flex;
   align-items:center;
   gap:.4rem;
-  margin-top:.15rem;
   font-size:.76rem;
   font-weight:600;
   letter-spacing:.1em;
@@ -260,6 +268,17 @@ main{padding-block:1.9rem 3.5rem}
 }
 .tool .go .arrow{transition:transform .16s ease}
 .tool:hover .go .arrow{transform:translateX(3px)}
+/* the currency stamp — what the tool is written against, from the tool itself */
+.tool .stamp{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--green);
+  background:var(--green-wash);
+  padding:.2rem .45rem;
+  white-space:nowrap;
+}
 
 /* a tool with no address is stated as such, never a dead link */
 .tool.unset{background:var(--brass-wash);border-style:dashed}
@@ -289,6 +308,8 @@ main{padding-block:1.9rem 3.5rem}
   color:var(--ink-3);
   max-width:38rem;
 }
+.colophon p{margin:0 0 .6rem}
+.colophon p:last-child{margin-bottom:0}
 .colophon strong{color:var(--ink-2);font-weight:500}
 </style>
 </head>
@@ -323,6 +344,7 @@ main{padding-block:1.9rem 3.5rem}
 
   <footer class="colophon">
     <p><strong>Every tool runs entirely in the browser.</strong> Nothing you type is sent anywhere unless the tool says otherwise — the GP notification letter keeps patient details on the page until you copy them out, and forgets them when you close it.</p>
+    <p>The nine live tools were opened and checked on 15 September 2026. The stamp on each label is the scheme year, standard or version the tool is written against, taken from the tool itself. A label in brass is built but not yet deployed.</p>
   </footer>
 </main>
 
@@ -330,15 +352,16 @@ main{padding-block:1.9rem 3.5rem}
 /* ═══════════════════════════════════════════════════════════════════
    TOOL LIST — the only thing you need to edit.
 
-   Four fields per tool:
+   Six fields per tool:
      group — the heading it sits under
      name  — what it is called
      desc  — one line on what it does
      meta  — a true figure from the tool itself, shown in brass
+     stamp — the scheme year, standard or version it is written against
      url   — where it lives; leave "" and the card says so rather
              than becoming a dead link
 
-   To add a tool, copy a block and change the five fields.
+   To add a tool, copy a block and change the six fields.
    ═══════════════════════════════════════════════════════════════════ */
 
 const APPS = [
@@ -348,21 +371,24 @@ const APPS = [
     group: "Compliance & inspection",
     name:  "Inspection Ready",
     desc:  "Self-audit against the GPhC standards for registered pharmacies, with an honest verdict and a dated improvement action plan.",
-    meta:  "67 checks · GPhC standards",
+    meta:  "67 checks · five principles",
+    stamp: "GPhC standards",
     url:   "https://inspection-ready-check.netlify.app/"
   },
   {
     group: "Compliance & inspection",
     name:  "CPAF Check",
-    desc:  "Both CPAF screening questionnaires in one place — an attainment level per question and the gaps listed out.",
-    meta:  "10 questions · 55 criteria",
+    desc:  "Both CPAF questionnaires in one place — the screening set scored by attainment level, and the full pre-visit set with the gaps listed out.",
+    meta:  "55 criteria · 106 questions",
+    stamp: "2026/27 screening",
     url:   "https://cpafquestionnaire.netlify.app/"
   },
   {
     group: "Compliance & inspection",
     name:  "PQS Tracker",
     desc:  "Tick off what you have done and it tells you whether you will be paid under the Pharmacy Quality Scheme, and how much.",
-    meta:  "9 checks · 2026/27",
+    meta:  "9 checks · £20m pot",
+    stamp: "2026/27",
     url:   "https://pqstracker.netlify.app/"
   },
 
@@ -371,7 +397,8 @@ const APPS = [
     group: "Clinical services",
     name:  "Scope of Practice Builder",
     desc:  "Build a defensible scope of practice record for pharmacist independent prescribers before going live.",
-    meta:  "Pharmacy First · contraception",
+    meta:  "8 sections · SOP-IP-001",
+    stamp: "v1.1",
     url:   "https://scopeofpractice.netlify.app/"
   },
   {
@@ -379,6 +406,7 @@ const APPS = [
     name:  "GP Notification Letter",
     desc:  "Weight management initiation letter to the patient's registered practice, with the surgery looked up and remembered.",
     meta:  "ODS lookup · NHSmail",
+    stamp: "Wording pending SP sign-off",
     url:   "https://gpletter.netlify.app/"
   },
 
@@ -387,21 +415,24 @@ const APPS = [
     group: "Staff & training",
     name:  "Staff Contract Builder",
     desc:  "Written statements of employment particulars for community pharmacy, with a matching staff handbook.",
-    meta:  "Current to September 2026",
+    meta:  "Contracts · handbook",
+    stamp: "Current to Sept 2026",
     url:   "https://staffcontracts.netlify.app/"
   },
   {
     group: "Staff & training",
     name:  "Training Matrix & Appraisals",
     desc:  "Track training by role and run appraisals that pull straight from each person's training record.",
-    meta:  "By role · per person",
+    meta:  "Required · expected · local",
+    stamp: "By role, per person",
     url:   "https://trainingmatrixandstaffreview.netlify.app/"
   },
   {
     group: "Staff & training",
     name:  "Staff Training Briefing Pack",
     desc:  "In-house briefings to deliver yourself, plus a routes page for the training that has to be done externally.",
-    meta:  "In-house · external routes",
+    meta:  "19 topics · 3 routes",
+    stamp: "v1.0",
     url:   "https://pharmacystafftraining.netlify.app/"
   },
 
@@ -410,8 +441,17 @@ const APPS = [
     group: "Buying & selling",
     name:  "Deal Appraiser",
     desc:  "Community pharmacy acquisitions underwritten from the buyer's side, checking the seller's item count against the NHS record.",
-    meta:  "NHSBSA dispensing data",
+    meta:  "Price · items · staffing",
+    stamp: "NHSBSA data",
     url:   "https://pharmacyappraisal.netlify.app/"
+  },
+  {
+    group: "Buying & selling",
+    name:  "Contractor Compare",
+    desc:  "Pull monthly dispensing volumes for any English contractor straight from the NHSBSA open data portal, then line up to eight of them side by side.",
+    meta:  "8 pharmacies · 36 months",
+    stamp: "Live NHSBSA feed",
+    url:   ""
   }
 
 ];
@@ -479,6 +519,9 @@ for (const groupName of order) {
     const p = document.createElement("p");
     p.textContent = app.desc;
 
+    const foot = document.createElement("div");
+    foot.className = "foot";
+
     const go = document.createElement("span");
     go.className = "go";
     if (linked) {
@@ -487,10 +530,18 @@ for (const groupName of order) {
     } else {
       go.textContent = "No address set yet";
     }
+    foot.appendChild(go);
 
-    card.append(meta, h3, p, go);
+    if (app.stamp) {
+      const stamp = document.createElement("span");
+      stamp.className = "stamp";
+      stamp.textContent = app.stamp;
+      foot.appendChild(stamp);
+    }
+
+    card.append(meta, h3, p, foot);
     li.appendChild(card);
-    li.dataset.search = (app.name + " " + app.desc + " " + app.meta + " " + app.group).toLowerCase();
+    li.dataset.search = (app.name + " " + app.desc + " " + app.meta + " " + (app.stamp || "") + " " + app.group).toLowerCase();
     ul.appendChild(li);
   }
 
